@@ -1,0 +1,41 @@
+:root {
+  /* Colour */
+  --ink: #052b42;
+  --page: #f0f8ff;
+  --surface: #ffffff;
+  --divider: #dfeefd;
+  --exercise: #c1c1ff;
+  --sport: #daff33;
+  --action: #5d52f6;
+  --badge: #e0e2fd;
+  --error: #c4001a;
+
+  /* Type */
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --size-title: 32px;
+  --size-range: 18px;
+  --size-body: 14px;
+  --size-label: 12px;
+  --line-title: 1.4;
+
+  /* Spacing, in steps of 4 px */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+
+  /* Shape */
+  --radius-card: 16px;
+  --radius-pill: 100px;
+  --shadow-card: 0 2px 8px rgba(5, 43, 66, 0.08);
+  --outline: 1.5px solid var(--ink);
+  --focus-ring: 0 0 0 3px rgba(93, 82, 246, 0.28);
+
+  /* Sizing */
+  --tap-min: 44px;
+  --icon-size: 22px;
+  --nav-height: 72px;
+  --content-max: 1100px;
+}

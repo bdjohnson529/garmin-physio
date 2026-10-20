@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.vercel/
+.env*
+!.env.example
+playwright-report/
+test-results/
+coverage/
+.DS_Store
+
+# Real Garmin exports stay out of the repo. Only the anonymised fixture is allowed.
+*.csv
+!fixtures/*.csv
