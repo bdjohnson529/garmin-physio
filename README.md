@@ -1,4 +1,4 @@
-# [APP NAME]
+# Physio Tracker
 
 A mobile-first PWA that shows Garmin activities next to body notes, with a read-only share link for a physio. The spec is in `Plan/spec.md`.
 
