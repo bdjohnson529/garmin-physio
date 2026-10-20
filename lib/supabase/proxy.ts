@@ -1,12 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { supabaseAnonKey, supabaseUrl } from "@/lib/env";
+import { supabasePublishableKey, supabaseUrl } from "@/lib/env";
 
 // Refreshes the session cookie on each request. Never runs for /s/[token].
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
-  const supabase = createServerClient(supabaseUrl(), supabaseAnonKey(), {
+  const supabase = createServerClient(supabaseUrl(), supabasePublishableKey(), {
     cookies: {
       getAll() {
         return request.cookies.getAll();

@@ -9,7 +9,7 @@ Supabase project region: **fill in before first use** (London, `eu-west-2`, or a
 ## Setup
 
 1. Create a Supabase project in London or an EU region.
-2. Copy `.env.example` to `.env.local` and fill in the project URL, anon key and service-role key.
+2. Copy `.env.example` to `.env.local` and fill in the project URL, publishable key and service-role key.
 3. Apply the migrations in `supabase/migrations/` in order. Either paste each file into the Supabase SQL editor, or run `npx supabase link` then `npx supabase db push`.
 4. In Supabase, go to Authentication, URL configuration. Set the site URL, and add redirect URLs `http://localhost:3000/auth/confirm` and your Vercel URLs ending in `/auth/confirm`.
 5. Run `npm run dev`.

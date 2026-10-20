@@ -3,13 +3,13 @@ import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const configured = Boolean(url && anonKey && serviceKey);
+const configured = Boolean(url && publishableKey && serviceKey);
 
 if (!configured) {
   console.warn(
-    "RLS isolation test SKIPPED: set NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY and " +
+    "RLS isolation test SKIPPED: set NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY and " +
       "SUPABASE_SERVICE_ROLE_KEY in .env.local (use a test project, not one holding real data).",
   );
 }
@@ -27,7 +27,7 @@ describe.skipIf(!configured)("row-level security isolates users", () => {
     const email = `rls-${label}-${randomUUID()}@example.test`;
     const created = await admin.auth.admin.createUser({ email, password, email_confirm: true });
     if (created.error) throw created.error;
-    const client = createClient(url!, anonKey!, { auth: { persistSession: false } });
+    const client = createClient(url!, publishableKey!, { auth: { persistSession: false } });
     const signedIn = await client.auth.signInWithPassword({ email, password });
     if (signedIn.error) throw signedIn.error;
     return { id: created.data.user.id, client };
@@ -108,7 +108,7 @@ describe.skipIf(!configured)("row-level security isolates users", () => {
   });
 
   it("gives anonymous visitors nothing", async () => {
-    const anon = createClient(url!, anonKey!, { auth: { persistSession: false } });
+    const anon = createClient(url!, publishableKey!, { auth: { persistSession: false } });
     const { data } = await anon.from("activities").select("id");
     expect(data ?? []).toEqual([]);
   });
